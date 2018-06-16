@@ -1,0 +1,14 @@
+{
+  "name": "dojo-mars-rover",
+  "version": "0.0.0",
+  "main": "server.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "jest": {
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/.c9/"
+    ]
+  }
+}
