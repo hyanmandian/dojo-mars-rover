@@ -1,14 +1,18 @@
 {
   "name": "dojo-mars-rover",
   "version": "0.0.0",
-  "main": "server.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest --coverage"
   },
   "jest": {
     "testPathIgnorePatterns": [
       "/node_modules/",
       "/.c9/"
-    ]
+    ],
+    "collectCoverage": true
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^23.2.0"
   }
 }
