@@ -2,7 +2,7 @@
   "name": "dojo-mars-rover",
   "version": "0.0.0",
   "scripts": {
-    "test": "jest --coverage"
+    "test": "jest --coverage --verbose"
   },
   "jest": {
     "testPathIgnorePatterns": [
