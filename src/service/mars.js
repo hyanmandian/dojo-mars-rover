@@ -1,6 +1,9 @@
+const Planet = require("../domain/planet");
+
 module.exports = class Mars {
   constructor() {
-    this.terrain = [
+    this.planet = new Planet();
+    this.planet.terrain = [
       [true, true, true, true, true, true, true, true, true, true],
       [true, true, true, true, true, true, true, true, true, true],
       [true, true, true, true, true, true, true, true, true, true],
@@ -10,11 +13,11 @@ module.exports = class Mars {
       [true, true, true, true, true, true, true, true, true, true],
       [true, true, true, true, true, true, true, true, true, true],
       [true, true, true, true, true, true, true, true, true, true],
-      [true, true, true, true, true, true, true, true, true, true],
+      [true, true, true, true, true, true, true, true, true, true]
     ];
   }
 
   isValidPosition({ x, y }) {
-    return !!(this.terrain[x] && this.terrain[x][y] === true);
+    return !!(this.planet.terrain[x] && this.planet.terrain[x][y] === true);
   }
-}
+};

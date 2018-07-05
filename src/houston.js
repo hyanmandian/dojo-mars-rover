@@ -1,27 +1,28 @@
-const Compass = require('./domain/compass');
+const {
+  CARDINAL_POINTS: { NORTH }
+} = require("./constant/compass");
 
 module.exports = class Houston {
-  setPlanet(planet) {
-    this.planet = planet;
+  constructor({ planetService, vehicleService }) {
+    this.vehicleService = vehicleService;
+    this.planetService = planetService;
   }
 
-  setVehicle(vehicle) {
-    this.vehicle = vehicle;
-  }
+  landVehicle({ x, y, facing = NORTH }) {
+    if (!this.planetService.isValidPosition({ x, y }))
+      throw new Error("Houston, we have a problem!");
 
-  landVehicle(position) {
-    if(!this.planet.isValidPosition(position)) throw new Error('Houston, we have a problem!');
-
-    return this.vehicle.setInitialState({ position, facing: Compass.getCardinalPoints.NORTH });
+    return this.vehicleService.land({ x, y, facing });
   }
 
   moveVehicle(movements) {
-    movements.forEach((movement) => {
-      this.vehicle.move((nextPosition) => {
-        if(!this.planet.isValidPosition(nextPosition)) throw new Error('Houston, we have a problem!');
+    movements.forEach(movement => {
+      this.vehicleService.move(({ x, y }) => {
+        if (!this.planet.isValidPosition({ x, y }))
+          throw new Error("Houston, we have a problem!");
 
         return true;
       });
     });
   }
-}
+};
